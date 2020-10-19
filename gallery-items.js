@@ -1,4 +1,4 @@
-export default [
+const array= [
   {
     preview:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
@@ -64,3 +64,26 @@ export default [
   },
 ];
 
+const ulList = document.querySelector('.js-gallery')
+
+
+  array.forEach((el) => { 
+    
+    ulList.insertAdjacentHTML("afterbegin", 
+    `<li class="gallery__item">
+   <a class="gallery__link" href="${el.original}">
+    <img class="gallery__image" src="${el.preview}" data-source="${el.original}" alt="${el.description}" />
+    </a>
+    </li> `)   
+ 
+  })
+    
+  
+//  <li class="gallery__item">
+//         <a class="gallery__link" href="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg">
+//             <img class="gallery__image" src="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546__340.jpg"
+//                 data-source="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg" alt="Tulips" />
+//         </a>
+//     </li>
+// ulList.insertAdjacentHTML("beforebegin", `<li class="gallery__item"><a class="gallery__link" href="${el.original}"> <img class="gallery__image" src="${el.preview}" data-source="${el.original}" alt="Tulips" /></a></li> `)   
+// `<li class="gallery__item"><a class="gallery__link"> href="${el.original}"> <img class="gallery__image" src="${el.preview}"data-source="${el.original}"alt="Tulips"/></a></li>`)
