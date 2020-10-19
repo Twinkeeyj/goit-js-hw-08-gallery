@@ -9,79 +9,28 @@
 </head>
 
 <body>
-     <div class="homework">
-        <ul id="categories">
-            <li class="item">
-                <h2>Животные</h2>
-        
-                <ul>
-                    <li>Кот</li>
-                    <li>Хомяк</li>
-                    <li>Лошадь</li>
-                    <li>Попугай</li>
-                </ul>
-            </li>
-            <li class="item">
-                <h2>Продукты</h2>
-        
-                <ul>
-                    <li>Хлеб</li>
-                    <li>Петрушка</li>
-                    <li>Творог</li>
-                </ul>
-            </li>
-            <li class="item">
-                <h2>Технологии</h2>
-        
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>Node</li>
-                </ul>
-            </li>
-        </ul>
+    <ul class=" gallery js-gallery ">
+    </ul>
+  
+  <!-- __________________ -->
+<div class="lightbox js-lightbox">
+    <div class="lightbox__overlay"></div>
+
+    <div class="lightbox__content">
+        <img class="lightbox__image" src="" alt="" />
     </div>
-    <div class="homework">
-<ul id="ingredients"></ul>
-    </div>
-   <div class="homework">
-    <ul id="gallery"></ul>
-   </div>
-   <div class="homework">
-    <div id="counter">
-        <button type="button" data-action="decrement">-1</button>
-        <span id="value" class="ck">0</span>
-        <button type="button" data-action="increment">+1</button>
-    </div>
-   </div>
-   <div class="homework">
-<input type="text" placeholder="Ваше имя?" id="name-input" />
-<h1>Привет, <span id="name-output">незнакомец</span>!</h1>
-   </div>
-   <div class="homework">
-    <input type="text" id="validation-input" data-length="6" placeholder="Введи 6 символов" />
-   </div>
-   <div class="homework">
-    <input id="font-size-control" type="range" />
-    <br />
-    <span id="text">Абракадабра!</span>
-   </div>
 
-
-    <script src="task-number_1.js"></script>
-    <script src="task-number_2.js"></script>
-    <script src="task-number_3.js"></script>
-    <script src="task-number_4.js"></script>
-    <script src="task-number_5.js"></script>
-    <script src="task-number_6.js"></script>
-    <script src="task-number_7.js"></script> 
-   
-
-
-
-
+    <button type="button" class="lightbox__button" data-action="close-lightbox"></button>
+</div>
+<!-- 
+    <li class="gallery__item">
+        <a class="gallery__link" href="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg">
+            <img class="gallery__image" src="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546__340.jpg"
+                data-source="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg" alt="Tulips" />
+        </a>
+    </li> -->
+    <script src="gallery-items.js" data=""></script>
 </body>
 
 </html>
+
