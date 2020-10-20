@@ -89,12 +89,44 @@ ulList.addEventListener("click", (e) => {
 })
 
 
-const openModal = function(picture){
+const openModal = function (picture) {
+  
   div.classList.add("is-open");
-  console.log(div);
+  // console.log(div);
   let img = document.querySelector(".lightbox__image");
   img.removeAttribute("src")
   img.setAttribute("src", picture)
+
+
+
+
+  console.log(img.src);
+
+  array.forEach((el, i, array) => {
+    console.log(i);
+    if (el.original === img.src )
+    {window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+     if(i>0 ){ img.removeAttribute("src")
+    img.setAttribute("src", array[i = i - 1].original)}
+     else{ img.removeAttribute("src")
+    img.setAttribute("src", array[i = i +array.length-1].original)}
+      
+   }
+      else if (e.key === 'ArrowLeft') {
+        if (i < array.length-1) {
+          img.removeAttribute("src")
+          img.setAttribute("src", array[i = i + 1].original)
+        }
+        else{ img.removeAttribute("src")
+    img.setAttribute("src", array[i = i -array.length+1].original)}
+  
+   }
+})
+    
+    }
+  })
+
 }
 
 const btn = document.querySelector(".lightbox__button");
@@ -102,3 +134,12 @@ const btn = document.querySelector(".lightbox__button");
 btn.addEventListener("click", () => {
   div.classList.remove("is-open")
 })
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    div.classList.remove('is-open')
+  }
+})
+
+const modd = document.querySelector('.lightbox__image')
+ console.log(modd);
