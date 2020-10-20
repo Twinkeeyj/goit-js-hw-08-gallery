@@ -67,23 +67,38 @@ const array= [
 const ulList = document.querySelector('.js-gallery')
 
 
-  array.forEach((el) => { 
-    
+  array.forEach((el) => {     
     ulList.insertAdjacentHTML("afterbegin", 
     `<li class="gallery__item">
    <a class="gallery__link" href="${el.original}">
     <img class="gallery__image" src="${el.preview}" data-source="${el.original}" alt="${el.description}" />
     </a>
     </li> `)   
- 
-  })
+ })
     
-  
-//  <li class="gallery__item">
-//         <a class="gallery__link" href="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg">
-//             <img class="gallery__image" src="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546__340.jpg"
-//                 data-source="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg" alt="Tulips" />
-//         </a>
-//     </li>
-// ulList.insertAdjacentHTML("beforebegin", `<li class="gallery__item"><a class="gallery__link" href="${el.original}"> <img class="gallery__image" src="${el.preview}" data-source="${el.original}" alt="Tulips" /></a></li> `)   
-// `<li class="gallery__item"><a class="gallery__link"> href="${el.original}"> <img class="gallery__image" src="${el.preview}"data-source="${el.original}"alt="Tulips"/></a></li>`)
+const bigImg = document.querySelector("[data-source]")
+const div = document.querySelector(".js-lightbox");
+
+ulList.addEventListener("click", (e) => {
+  e.preventDefault()
+  if (e.target.nodeName !== "IMG") {
+    return
+  } 
+  let img = e.target;
+  openModal(img.dataset.source);
+})
+
+
+const openModal = function(picture){
+  div.classList.add("is-open");
+  console.log(div);
+  let img = document.querySelector(".lightbox__image");
+  img.removeAttribute("src")
+  img.setAttribute("src", picture)
+}
+
+const btn = document.querySelector(".lightbox__button");
+
+btn.addEventListener("click", () => {
+  div.classList.remove("is-open")
+})
