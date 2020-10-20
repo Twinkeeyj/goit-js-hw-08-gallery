@@ -64,82 +64,78 @@ const array= [
   },
 ];
 
-const ulList = document.querySelector('.js-gallery')
+const ulList = document.querySelector('.js-gallery');
+const lightboxContent = document.querySelector('.lightbox__overlay');
+const bigImg = document.querySelector("[data-source]");
+const div = document.querySelector(".js-lightbox");
+const btn = document.querySelector(".lightbox__button");
+let img = document.querySelector(".lightbox__image");
+ 
 
-
-  array.forEach((el) => {     
-    ulList.insertAdjacentHTML("afterbegin", 
+array.forEach((el) => {
+  ulList.insertAdjacentHTML("afterbegin",
     `<li class="gallery__item">
    <a class="gallery__link" href="${el.original}">
     <img class="gallery__image" src="${el.preview}" data-source="${el.original}" alt="${el.description}" />
     </a>
-    </li> `)   
- })
-    
-const bigImg = document.querySelector("[data-source]")
-const div = document.querySelector(".js-lightbox");
-
-ulList.addEventListener("click", (e) => {
+    </li> `)
+});
+  
+const findingName = function (e) {
   e.preventDefault()
   if (e.target.nodeName !== "IMG") {
     return
-  } 
+  }
   let img = e.target;
   openModal(img.dataset.source);
-})
-
+};
 
 const openModal = function (picture) {
-  
   div.classList.add("is-open");
-  // console.log(div);
-  let img = document.querySelector(".lightbox__image");
-  img.removeAttribute("src")
-  img.setAttribute("src", picture)
-
-
-
-
-  console.log(img.src);
-
+  img.removeAttribute("src");
+  img.setAttribute("src", picture);
+  
   array.forEach((el, i, array) => {
-    console.log(i);
     if (el.original === img.src )
     {window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') {
-     if(i>0 ){ img.removeAttribute("src")
-    img.setAttribute("src", array[i = i - 1].original)}
-     else{ img.removeAttribute("src")
-    img.setAttribute("src", array[i = i +array.length-1].original)}
-      
-   }
-      else if (e.key === 'ArrowLeft') {
-        if (i < array.length-1) {
-          img.removeAttribute("src")
-          img.setAttribute("src", array[i = i + 1].original)
-        }
+        if(i>0 ){ img.removeAttribute("src")
+        img.setAttribute("src", array[i = i - 1].original)}
         else{ img.removeAttribute("src")
-    img.setAttribute("src", array[i = i -array.length+1].original)}
-  
-   }
-})
+    img.setAttribute("src", array[i = i +array.length-1].original)}
     
+  }else if (e.key === 'ArrowLeft') {
+    if (i < array.length-1) {
+      img.removeAttribute("src")
+      img.setAttribute("src", array[i = i + 1].original)
     }
-  })
-
+    else{ img.removeAttribute("src")
+    img.setAttribute("src", array[i = i -array.length+1].original)}
+    
+  }
+})   
 }
-
-const btn = document.querySelector(".lightbox__button");
-
-btn.addEventListener("click", () => {
+  })
+  
+};
+const closingModal = () => {
   div.classList.remove("is-open")
-})
+  btn.removeEventListener("click", closingModal)
+};
 
-window.addEventListener('keydown', (e) => {
+const closingWindow = () => {
+  div.classList.remove("is-open")
+lightboxContent.removeEventListener('click',closingWindow)
+};
+
+const closingEscape = (e) => {
   if (e.key === 'Escape') {
     div.classList.remove('is-open')
   }
-})
+  window.removeEventListener('keydown',closingEscape)
+};
 
-const modd = document.querySelector('.lightbox__image')
- console.log(modd);
+lightboxContent.addEventListener('click',closingWindow)
+window.addEventListener('keydown',closingEscape)
+btn.addEventListener("click", closingModal);
+ulList.addEventListener("click",findingName)
