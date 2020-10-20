@@ -120,19 +120,19 @@ const openModal = function (picture) {
 };
 const closingModal = () => {
   div.classList.remove("is-open")
-  btn.removeEventListener("click", closingModal)
+  
 };
 
 const closingWindow = () => {
   div.classList.remove("is-open")
-lightboxContent.removeEventListener('click',closingWindow)
+
 };
 
 const closingEscape = (e) => {
   if (e.key === 'Escape') {
     div.classList.remove('is-open')
   }
-  window.removeEventListener('keydown',closingEscape)
+  
 };
 
 lightboxContent.addEventListener('click',closingWindow)
