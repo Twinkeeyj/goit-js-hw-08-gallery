@@ -100,46 +100,44 @@ const openModal = function (picture) {
     {
       
       const followingImage = (e) => {
-      if (e.key === 'ArrowRight') {
-        if(i>0 ){ img.removeAttribute("src")
-        img.setAttribute("src", array[i = i - 1].original)}
-        else{ img.removeAttribute("src")
-    img.setAttribute("src", array[i = i +array.length-1].original)}
-    
-  }else if (e.key === 'ArrowLeft') {
-        if (i < array.length - 1) {
-      i = i + 1
-      img.removeAttribute("src")
-          img.setAttribute("src", array[i].original)
+        if (e.key === 'ArrowRight') {
+          if(i>0 ){ img.removeAttribute("src")
+          img.setAttribute("src", array[i = i - 1].original)}
+          else{ img.removeAttribute("src")
+          img.setAttribute("src", array[i = i +array.length-1].original)}
           
-    }
-        else {
-          i=i- array.length + 1
-          img.removeAttribute("src")
-          img.setAttribute("src", array[i].original)
-        };
-    
-  }
-}  
-window.addEventListener('keydown', followingImage)
+        }else if (e.key === 'ArrowLeft') {
+          if (i < array.length - 1) {
+            i = i + 1
+            img.removeAttribute("src")
+            img.setAttribute("src", array[i].original)
+            
+          }
+          else {
+            i=i- array.length + 1
+            img.removeAttribute("src")
+            img.setAttribute("src", array[i].original)
+          };
+          
+        }
+      }  
+      window.addEventListener('keydown', followingImage)
     }
   })
-  
+  window.addEventListener('keydown',closingEscape)
+  lightboxContent.addEventListener('click', closingModal);
+btn.addEventListener("click", closingModal);
 };
 const closingModal = () => {
   div.classList.remove("is-open")
-  // btn.removeEventListener("click", closingModal)
-  // lightboxContent.removeEventListener('click', closingModal)
+  btn.removeEventListener("click", closingModal)
+  lightboxContent.removeEventListener('click', closingModal)
 };
 
 const closingEscape = (e) => {
   if (e.key === 'Escape') {
     div.classList.remove('is-open')
-    // window.removeEventListener('keydown',closingEscape)
+    window.removeEventListener('keydown',closingEscape)
   }
 };
-
-lightboxContent.addEventListener('click', closingModal);
-btn.addEventListener("click", closingModal);
-window.addEventListener('keydown',closingEscape)
 ulList.addEventListener("click",findingName)
