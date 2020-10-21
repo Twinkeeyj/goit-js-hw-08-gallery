@@ -120,14 +120,14 @@ const openModal = function (picture) {
 };
 const closingModal = () => {
   div.classList.remove("is-open")
-  btn.removeEventListener("click", closingModal)
-  lightboxContent.removeEventListener('click', closingModal)
+  // btn.removeEventListener("click", closingModal)
+  // lightboxContent.removeEventListener('click', closingModal)
 };
 
 const closingEscape = (e) => {
   if (e.key === 'Escape') {
     div.classList.remove('is-open')
-    window.removeEventListener('keydown',closingEscape)
+    // window.removeEventListener('keydown',closingEscape)
   }
 };
 
