@@ -97,7 +97,9 @@ const openModal = function (picture) {
   
   array.forEach((el, i, array) => {
     if (el.original === img.src )
-    {window.addEventListener('keydown', (e) => {
+    {
+      
+      const followingImage = (e) => {
       if (e.key === 'ArrowRight') {
         if(i>0 ){ img.removeAttribute("src")
         img.setAttribute("src", array[i = i - 1].original)}
@@ -105,16 +107,22 @@ const openModal = function (picture) {
     img.setAttribute("src", array[i = i +array.length-1].original)}
     
   }else if (e.key === 'ArrowLeft') {
-    if (i < array.length-1) {
+        if (i < array.length - 1) {
+      i = i + 1
       img.removeAttribute("src")
-      img.setAttribute("src", array[i = i + 1].original)
+          img.setAttribute("src", array[i].original)
+          
     }
-    else{ img.removeAttribute("src")
-    img.setAttribute("src", array[i = i -array.length+1].original)}
+        else {
+          i=i- array.length + 1
+          img.removeAttribute("src")
+          img.setAttribute("src", array[i].original)
+        };
     
   }
-})   
-}
+}  
+window.addEventListener('keydown', followingImage)
+    }
   })
   
 };
