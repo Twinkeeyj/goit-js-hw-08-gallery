@@ -99,10 +99,13 @@ const openModal = function (picture) {
       
       const followingImage = (e) => {
         if (e.key === 'ArrowRight') {
-          if(i>0 ){ img.removeAttribute("src")
-          img.setAttribute("src", array[i = i - 1].original)}
-          else{ img.removeAttribute("src")
-          img.setAttribute("src", array[i = i +array.length-1].original)}
+          if (i > 0) {
+            i = i - 1
+            img.removeAttribute("src")
+          img.setAttribute("src", array[i].original)}
+          else {i = i +array.length-1
+            img.removeAttribute("src")
+          img.setAttribute("src", array[i].original)}
           
         }else if (e.key === 'ArrowLeft') {
           if (i < array.length - 1) {
