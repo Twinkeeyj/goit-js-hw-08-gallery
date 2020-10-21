@@ -68,10 +68,8 @@ const ulList = document.querySelector('.js-gallery');
 const lightboxContent = document.querySelector('.lightbox__overlay');
 const bigImg = document.querySelector("[data-source]");
 const div = document.querySelector(".js-lightbox");
-const btn = document.querySelector(".lightbox__button");
 let img = document.querySelector(".lightbox__image");
  
-
 array.forEach((el) => {
   ulList.insertAdjacentHTML("afterbegin",
     `<li class="gallery__item">
@@ -125,13 +123,13 @@ const openModal = function (picture) {
     }
   })
   window.addEventListener('keydown',closingEscape)
-  lightboxContent.addEventListener('click', closingModal);
-btn.addEventListener("click", closingModal);
+  div.addEventListener('click', closingModal);
 };
-const closingModal = () => {
-  div.classList.remove("is-open")
-  btn.removeEventListener("click", closingModal)
-  lightboxContent.removeEventListener('click', closingModal)
+const closingModal = (e) => {
+ if (e.target.nodeName !== "IMG") {
+   div.classList.remove("is-open")
+  div.removeEventListener('click', closingModal)
+  }
 };
 
 const closingEscape = (e) => {
